@@ -17,7 +17,7 @@ app.use(cors());
 app.use('/posts', postRoutes);
 
 mongoose
-  .connect(process.env.REACT_APP_MONGO_URI, {
+  .connect(process.env.MONGO_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true
   })
