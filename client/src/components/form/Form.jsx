@@ -37,7 +37,7 @@ const Form = ({ currentId, setCurrentId }) => {
     handleClear();
   };
 
-  const handleClear = (e) => {
+  const handleClear = () => {
     setCurrentId(null);
     setPostData({
       creator: '',
@@ -104,7 +104,6 @@ const Form = ({ currentId, setCurrentId }) => {
             onDone={({ base64 }) =>
               setPostData({ ...postData, selectedFile: base64 })
             }
-            value={postData.selectedFile}
           />
         </div>
         <Button

@@ -11,7 +11,7 @@ export const getPosts = async (req, res) => {
 };
 
 export const createPost = async (req, res) => {
-  const newPost = PostMessage(req.body);
+  const newPost = PostMessage({ ...req.body, createdAt: Date.now() });
   try {
     await newPost.save();
     res.status(201).json(newPost);
@@ -28,12 +28,15 @@ export const updatePost = async (req, res) => {
     if (!mongoose.Types.ObjectId.isValid(id))
       return res.status(404).send(`No post with id: ${id}`);
 
+    const { createdAt, likeCount } = await PostMessage.findById(id);
     const updatedPost = {
       creator,
       title,
       message,
       tags,
       selectedFile,
+      createdAt,
+      likeCount,
       _id: id
     };
 

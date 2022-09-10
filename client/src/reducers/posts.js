@@ -12,7 +12,7 @@ const reducer = (posts = [], action) => {
       return action.payload;
     }
     case CREATE: {
-      return [...posts, action.payload];
+      return [action.payload, ...posts];
     }
     case UPDATE: {
       return posts.map((post) =>
